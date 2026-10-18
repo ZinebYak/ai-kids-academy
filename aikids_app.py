@@ -60,7 +60,7 @@ with st.sidebar:
     ])
     st.divider()
     st.markdown("**YakData Engineering**")
-    st.markdown("[🌐 yakdata.fr](https://yakdata.fr) · [🎮 Prototype HTML](https://claude.ai/artifact/FsJ8t7CLAgGABh1k63JMzo)")
+    st.markdown("[🌐 Site](https://yakdata-engineering.netlify.app) · [📞 Contact](https://yakdata-engineering.netlify.app/#contact) · [🎮 Prototype HTML](https://claude.ai/artifact/FsJ8t7CLAgGABh1k63JMzo)")
 
 # ── ACCUEIL ────────────────────────────────────────────────────
 if module == "🏠 Accueil":
