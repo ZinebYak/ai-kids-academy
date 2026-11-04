@@ -1,2 +1,2 @@
-# ai-kids-academy
-Prototype Streamlit — AI Kids Academy
+# ai-sabi-academy
+Prototype Streamlit — AI Sabi Academy
