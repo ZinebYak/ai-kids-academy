@@ -273,6 +273,178 @@ def texte_bilan(site, groupes):
 
 
 
+
+# --- Contenus de la première version (quiz, code, glossaire, humeur, conte, mouvement) ---
+
+QUIZ_IA = [
+    {
+        "q": "Quand Spotify te propose « Découvertes de la semaine », comment fait-il ?",
+        "opts": ["Un algorithme de recommandation analyse tes écoutes", "Un humain choisit pour toi", "Il tire au hasard", "Il copie les choix de tes amis"],
+        "ans": 0, "diff": "⭐ Débutant", "xp": 30,
+        "expl": "Spotify utilise un algorithme de recommandation : il compare tes écoutes à celles d'utilisateurs semblables. C'est du Machine Learning.",
+    },
+    {
+        "q": "Un réseau de neurones artificiel s'inspire de quoi ?",
+        "opts": ["L'architecture d'un ordinateur", "Le cerveau humain", "Un réseau électrique", "Un arbre de décision"],
+        "ans": 1, "diff": "⭐ Débutant", "xp": 30,
+        "expl": "Les réseaux de neurones artificiels s'inspirent du cerveau : des neurones connectés qui transmettent des signaux et apprennent par l'expérience.",
+    },
+    {
+        "q": "Qu'est-ce que le « Machine Learning » ?",
+        "opts": ["Un ordinateur qui joue seulement aux échecs", "Un programme qui apprend à partir de données", "Un robot qui se déplace", "Un logiciel de traduction"],
+        "ans": 1, "diff": "⭐⭐ Intermédiaire", "xp": 50,
+        "expl": "Le Machine Learning est la capacité d'un programme à apprendre à partir de données, sans qu'on écrive une règle pour chaque cas.",
+    },
+    {
+        "q": "ChatGPT est un exemple de :",
+        "opts": ["Réseau de neurones pour les images (CNN)", "Modèle de langage (LLM)", "Algorithme de tri", "Base de données"],
+        "ans": 1, "diff": "⭐⭐ Intermédiaire", "xp": 50,
+        "expl": "ChatGPT est un modèle de langage (LLM) : il a été entraîné sur beaucoup de textes pour comprendre et produire du langage.",
+    },
+    {
+        "q": "Une IA peut-elle se tromper ?",
+        "opts": ["Non, elle est toujours parfaite", "Oui, par exemple si ses exemples d'apprentissage étaient mauvais", "Non, les algorithmes sont infaillibles", "Seulement si on fait une faute de frappe"],
+        "ans": 1, "diff": "⭐⭐⭐ Avancé", "xp": 80,
+        "expl": "Oui ! Une IA apprend à partir d'exemples : s'ils sont biaisés ou incomplets, elle se trompera. C'est pourquoi l'esprit critique est important.",
+    },
+]
+
+CODE_CLASSIFIEUR = """def ia_reconnait(taille, aboie):
+    # Une règle simple écrite par un humain
+    if taille > 50 and aboie:
+        return "Chien (confiance 95 %)"
+    elif taille < 30 and not aboie:
+        return "Chat (confiance 88 %)"
+    else:
+        return "Incertain : besoin de plus d'exemples"
+
+print(ia_reconnait(60, True))
+print(ia_reconnait(25, False))
+print(ia_reconnait(40, True))"""
+
+
+def ia_reconnait(taille, aboie):
+    """Petite règle de décision pour le défi de code (exemple pédagogique)."""
+    if taille > 50 and aboie:
+        return "Chien (confiance 95 %)"
+    if taille < 30 and not aboie:
+        return "Chat (confiance 88 %)"
+    return "Incertain : besoin de plus d'exemples"
+
+
+CHEATSHEET = [
+    ("Condition", "if x > 50:", "Prendre une décision selon une valeur"),
+    ("Fonction", "def ma_fonction(param):", "Créer un outil réutilisable"),
+    ("Boucle", "for item in liste:", "Répéter une action sur chaque élément"),
+    ("Liste", "ma_liste = [1, 2, 3]", "Ranger plusieurs valeurs"),
+    ("Import", "import pandas as pd", "Charger une bibliothèque"),
+    ("Affichage", "print('résultat')", "Afficher un résultat"),
+    ("Variable", "x = 42", "Garder une valeur en mémoire"),
+    ("Commentaire", "# ceci est une note", "Expliquer le code (non exécuté)"),
+]
+
+CONCEPTS = {
+    "Classification 🏷️": "Trier des données en catégories (spam ou non, chien ou chat). L'IA apprend à partir d'exemples étiquetés.",
+    "Régression 📈": "Prédire une valeur (prix d'une maison, température). L'IA cherche la courbe qui colle le mieux aux données.",
+    "Regroupement 🔵": "Rassembler des données semblables sans étiquettes. L'IA découvre des groupes cachés.",
+    "Langage (NLP) 💬": "Comprendre et produire du texte : traduction, résumé, assistants.",
+    "Vision par ordinateur 👁️": "Analyser des images ou des vidéos : reconnaître des objets, des gestes.",
+    "Apprendre par essais 🎮": "Apprendre en essayant et en recevant des récompenses, comme dans un jeu vidéo.",
+}
+
+GLOSSAIRE = {
+    "Algorithme": "Suite d'instructions précises qu'un ordinateur suit pour résoudre un problème. Comme une recette de cuisine.",
+    "Intelligence artificielle": "Capacité d'une machine à imiter certaines fonctions humaines : apprendre, raisonner, résoudre des problèmes.",
+    "Machine Learning": "Branche de l'IA où les machines apprennent à partir de données, sans règle écrite pour chaque cas.",
+    "Deep Learning": "Machine Learning avec des réseaux de neurones à plusieurs couches. Très utilisé pour les images et la voix.",
+    "Réseau de neurones": "Système inspiré du cerveau, fait de couches de « neurones » artificiels connectés.",
+    "Donnée": "Information brute (nombre, texte, image) que l'IA utilise pour apprendre.",
+    "Jeu de données": "Ensemble de données organisé, utilisé pour entraîner un modèle.",
+    "Modèle": "Résultat de l'entraînement d'un algorithme sur des données : il peut ensuite faire des prédictions.",
+    "Entraînement": "Phase d'apprentissage d'un modèle sur des données. Comme réviser pour un contrôle.",
+    "Prédiction": "Ce que le modèle annonce en analysant une nouvelle donnée.",
+    "Classification": "Trier des données en catégories (chien ou chat, spam ou non).",
+    "Régression": "Prédire une valeur numérique (prix, température).",
+    "NLP": "Traitement du langage naturel : permet à l'IA de travailler sur du texte humain.",
+    "LLM": "Grand modèle de langage, entraîné sur énormément de textes. Exemples : les assistants de conversation.",
+    "Biais": "Erreur systématique d'un modèle, souvent due à des exemples d'apprentissage trop peu variés.",
+    "Éthique de l'IA": "Principes pour une IA juste, transparente et respectueuse des personnes.",
+    "Python": "Langage de programmation très utilisé en IA pour sa simplicité.",
+    "Variable": "Boîte qui garde une valeur en mémoire. Exemple : age = 10.",
+    "Fonction": "Bloc de code réutilisable qui fait une tâche précise.",
+    "API": "Interface qui permet à des logiciels de se parler.",
+    "Cloud": "Serveurs distants sur Internet où tourne souvent l'IA.",
+    "Pose du corps": "Technique qui repère les points du corps (épaules, coudes, mains) sur une image.",
+    "Recommandation": "Système qui suggère du contenu personnalisé (vidéos, musiques).",
+    "Caractéristique": "Information utilisée par l'IA pour décider : taille, couleur, prix...",
+    "Étiquette": "La bonne réponse attendue pour un exemple d'entraînement (chien ou chat).",
+    "Précision": "Part de bonnes réponses d'un modèle.",
+    "Surapprentissage": "Quand une IA apprend par cœur ses exemples et se trompe sur les nouveaux.",
+    "Regroupement": "Rassembler des données semblables sans étiquettes.",
+    "Open source": "Logiciel dont le code est public. Beaucoup d'outils d'IA le sont.",
+    "RGPD": "Règlement européen sur la protection des données personnelles.",
+}
+
+EMOTIONS = {
+    "😄 Super": ("Tu as de l'énergie : l'application proposerait un défi un peu plus difficile.", "⭐", "Tu rayonnes aujourd'hui !",
+                 "Tibo t'a préparé un défi plus difficile. Dans cette histoire, le robot champion t'apprend ses secrets."),
+    "🙂 Bien": ("Parfait pour apprendre : une activité équilibrée serait proposée.", "💚", "Tu vas bien, c'est l'essentiel !",
+                "Une belle journée pour apprendre. Tibo raconte comment les robots apprennent à être utiles."),
+    "😐 Moyen": ("Pas grave : l'application proposerait une séance plus courte et plus ludique.", "🌟", "Chaque jour compte !",
+                 "Ça arrive d'être entre les deux. Tibo cherche son énergie dans une forêt de données magiques."),
+    "😰 Stressé·e": ("Pas de pression : on commencerait par quelques respirations.", "💜", "Tu fais de ton mieux !",
+                    "Tibo aussi se sent parfois dépassé. Il a trouvé une astuce : compter jusqu'à huit en respirant."),
+    "😴 Fatigué·e": ("Besoin de repos : une activité très courte serait proposée.", "🌙", "Le repos aussi, c'est apprendre !",
+                    "Ce soir, Tibo te raconte une courte histoire douce pour te reposer."),
+    "😢 Triste": ("Mode doux : pas de quiz, plutôt une activité créative.", "🤗", "Tu n'es pas seul·e !",
+                 "Tibo a déjà été triste. Il a compris que partager ce qu'on ressent le rend plus léger."),
+    "🤔 Curieux·se": ("Tu as envie d'explorer : un module bonus serait proposé.", "🔭", "Ta curiosité est une super-puissance !",
+                     "Tibo t'emmène découvrir comment une IA apprend à reconnaître des étoiles."),
+    "🥳 Fier·e": ("Tu as de quoi être fier·e : on commencerait par tes réussites.", "🏆", "Tu mérites ta fierté !",
+                 "Tous les champions ont commencé par les bases. Tibo fête tes progrès avec un conte épique."),
+}
+
+SUITES_CONTE = [
+    "…et Tibo comprit que l'intelligence ne tient pas aux réponses, mais aux bonnes questions.",
+    "…Léa et Tibo devinrent amis et apprirent l'un de l'autre chaque jour.",
+    "…c'est ainsi que Tibo découvrit que les données sont faites par des humains, pour des humains.",
+]
+
+CAPSULES = {
+    "🌅 Réveil musculaire": ["Étire les bras vers le ciel × 5", "Tourne les épaules × 10", "Penche la tête à gauche et à droite × 5", "Respire profondément × 3"],
+    "🧠 Pause cerveau": ["Ferme les yeux 30 secondes", "Masse doucement tes tempes", "Regarde loin par la fenêtre 20 secondes", "Bâille trois fois : ça oxygène !"],
+    "💪 Énergie express": ["Jumping jacks × 10", "Squats × 5", "Pompes sur les genoux × 5", "Course sur place 30 secondes"],
+    "😌 Relaxation": ["Inspire 4 s, retiens 4 s, expire 4 s", "Détends les épaules × 3", "Fais ton plus grand sourire", "Pense à quelque chose de beau pendant 10 secondes"],
+}
+
+DEFIS_SKELETON = [
+    ("🙆", "Bras en croix", "Les points du corps sont repérés", "✅ Réussi"),
+    ("🤸", "Étoile de mer", "Écarte les bras et les jambes", "✅ Réussi"),
+    ("🧘", "Position yoga", "Équilibre sur une jambe", "⏳ En cours"),
+    ("💃", "Séquence de danse", "Quatre gestes enchaînés", "🔒 Bloqué"),
+]
+
+
+def conte_guide(heros, lieu, defi, fin):
+    """Conte à partir de modèles de phrases (pas d'IA générative)."""
+    return (
+        f"**{heros} et le défi de {lieu}**\n\n"
+        f"Il était une fois {heros}, qui vivait dans {lieu}. Un jour, {heros} dut relever un grand défi : {defi}.\n\n"
+        f"Au début, {heros} pensait que c'était impossible. Mais avec de la patience et l'aide de ses amis, "
+        f"{heros} trouva une méthode : regarder la situation sous un angle nouveau.\n\n"
+        f"La fin fut {fin} : {heros} réussit son défi et apprit que même une IA peut toujours progresser.\n\n"
+        "(Conte guidé construit à partir de modèles de phrases, AI Sabi Academy.)"
+    )
+
+
+def ajouter_xp(points, badge=None):
+    """Ajoute des points d'expérience et, si besoin, un badge."""
+    st.session_state["xp"] += points
+    st.session_state["niveau"] = 1 + st.session_state["xp"] // 200
+    if badge and badge not in st.session_state["badges"]:
+        st.session_state["badges"].append(badge)
+
+
 # Démo interactive de l'accueil : « Entraîne ta première IA » (HTML + JavaScript, 100 % dans le navigateur)
 HTML_WOW = r"""<!DOCTYPE html>
 <html lang="fr"><head><meta charset="utf-8">
@@ -585,10 +757,11 @@ def page_accueil():
     st.markdown(
         "1. **Accueil** : entraîne ta première IA avec la démo animée du haut de la page.\n"
         "2. **Parcours** : ouvre la fiche animateur de la séance 1.\n"
-        "3. **Jeux** : essaie « Apprendre par cœur » et « Groupes cachés ».\n"
-        "4. **Mon diplôme** : crée un diplôme avec un pseudo.\n"
-        "5. **Tableau de bord** : regarde le bilan de fin de cycle (données fictives).\n"
-        "6. **Offre et pilote** : estime le coût et demande un pilote gratuit de 8 semaines."
+        "3. **Jeux** : essaie « Apprendre par cœur », « Groupes cachés » et le quiz.\n"
+        "4. **Mouvement** : lance un défi avec le minuteur.\n"
+        "5. **Mon diplôme** : crée un diplôme avec un pseudo.\n"
+        "6. **Tableau de bord** : regarde le bilan de fin de cycle (données fictives).\n"
+        "7. **Offre et pilote** : estime le coût et demande un pilote gratuit de 8 semaines."
     )
 
 
@@ -727,9 +900,60 @@ def jeu_groupes():
     st.caption("Les croix noires sont les « centres » des groupes. Avec 3 groupes, on retrouve les trois nuages cachés ; avec un autre nombre, l'IA découpe autrement.")
 
 
+def jeu_quiz():
+    st.markdown("### Quiz IA : difficulté croissante")
+    st.caption("Le moteur adaptatif complet viendra en version 2. Ici, les questions deviennent plus difficiles au fil du quiz.")
+    version = st.session_state.setdefault("qa_version", 0)
+    idx = min(st.session_state["quiz_idx"], len(QUIZ_IA) - 1)
+    q = QUIZ_IA[idx]
+    c1, c2, c3 = st.columns([4, 1, 1])
+    c1.progress(idx / len(QUIZ_IA), text=f"Question {idx + 1} sur {len(QUIZ_IA)}")
+    c2.markdown(f"**{q['diff']}**")
+    c3.markdown(f"**+{q['xp']} XP**")
+    st.markdown(f"#### {q['q']}")
+
+    if not st.session_state["quiz_answered"]:
+        choix = st.radio("Ta réponse :", q["opts"], index=None, key=f"qa_{version}_{idx}")
+        if st.button("✅ Valider", type="primary", use_container_width=True, key="qa_valider"):
+            if choix is None:
+                st.warning("Choisis une réponse d'abord.")
+            else:
+                bonne = choix == q["opts"][q["ans"]]
+                st.session_state["quiz_correct"] = bonne
+                st.session_state["quiz_answered"] = True
+                st.session_state["quiz_fete"] = False
+                if bonne:
+                    st.session_state["quiz_score"] += 1
+                    ajouter_xp(q["xp"], "🎯 Quiz Master" if st.session_state["quiz_score"] >= 3 else None)
+                st.rerun()
+    else:
+        if st.session_state["quiz_correct"]:
+            st.success(f"🏅 Bravo ! +{q['xp']} XP")
+            if not st.session_state.get("quiz_fete"):
+                st.balloons()
+                st.session_state["quiz_fete"] = True
+        else:
+            st.error(f"Pas tout à fait. La bonne réponse : **{q['opts'][q['ans']]}**")
+        with st.expander("🤖 Tibo t'explique"):
+            st.markdown(q["expl"])
+        d1, d2 = st.columns(2)
+        if idx < len(QUIZ_IA) - 1:
+            if d1.button("➡️ Question suivante", type="primary", use_container_width=True, key="qa_suivante"):
+                st.session_state["quiz_idx"] += 1
+                st.session_state["quiz_answered"] = False
+                st.session_state["quiz_correct"] = None
+                st.rerun()
+        else:
+            d1.success(f"Quiz terminé : {st.session_state['quiz_score']} sur {len(QUIZ_IA)}")
+        if d2.button("🔄 Recommencer", use_container_width=True, key="qa_recommencer"):
+            st.session_state.update({"quiz_idx": 0, "quiz_score": 0, "quiz_answered": False, "quiz_correct": None, "qa_version": version + 1})
+            st.rerun()
+    st.caption(f"Score de la session : {st.session_state['quiz_score']} bonne(s) réponse(s)")
+
+
 def page_jeux():
     st.markdown("# 🎮 Jeux pour les enfants")
-    onglets = st.tabs(["À qui ressemble-t-il ?", "Apprendre par cœur", "Se tromper", "Groupes cachés"])
+    onglets = st.tabs(["À qui ressemble-t-il ?", "Apprendre par cœur", "Se tromper", "Groupes cachés", "Quiz IA"])
     with onglets[0]:
         jeu_voisins()
     with onglets[1]:
@@ -738,6 +962,98 @@ def page_jeux():
         jeu_erreurs()
     with onglets[3]:
         jeu_groupes()
+    with onglets[4]:
+        jeu_quiz()
+
+
+def page_coding():
+    st.markdown("# 💻 A code a day, to learn & play")
+    st.caption("Aperçu de la version 2 : initiation au code, visualisation des concepts et glossaire.")
+    t1, t2, t3, t4 = st.tabs(["🎯 Défi du jour", "📋 Cheat sheet", "🔮 Concepts en images", "📚 Glossaire IA"])
+
+    with t1:
+        st.info("**Défi :** écris les règles d'une toute petite « IA » qui devine si c'est un chien ou un chat.")
+        st.code(CODE_CLASSIFIEUR, language="python")
+        st.markdown("#### Teste la règle en direct")
+        c1, c2 = st.columns(2)
+        taille = c1.slider("Taille de l'animal (cm)", 5, 100, 40, key="code_taille")
+        aboie = c2.toggle("L'animal aboie ?", key="code_aboie")
+        if st.button("▶️ Lancer la règle", type="primary", use_container_width=True, key="code_lancer"):
+            st.success(f"**Résultat :** {ia_reconnait(taille, aboie)}")
+            if not st.session_state["code_ran"]:
+                st.session_state["code_ran"] = True
+                ajouter_xp(40, "💻 First Code")
+            st.info("Ici, c'est un humain qui a écrit les règles. Une vraie IA, elle, apprend ses règles à partir d'exemples (voir les jeux).")
+
+    with t2:
+        st.markdown("### Les commandes de base de Python")
+        for nom, exemple, explication in CHEATSHEET:
+            c1, c2, c3 = st.columns([2, 3, 3])
+            c1.markdown(f"**{nom}**")
+            c2.code(exemple, language="python")
+            c3.markdown(f"*{explication}*")
+
+    with t3:
+        st.markdown("### Les grandes familles de l'IA")
+        colonnes = st.columns(3)
+        for i, (terme, description) in enumerate(CONCEPTS.items()):
+            with colonnes[i % 3]:
+                with st.expander(terme):
+                    st.write(description)
+
+    with t4:
+        st.markdown("### Glossaire de l'IA")
+        recherche = st.text_input("🔍 Cherche un mot", placeholder="Par exemple : algorithme, biais, donnée...", key="glossaire_recherche")
+        resultats = {k: v for k, v in GLOSSAIRE.items() if not recherche or recherche.lower() in k.lower() or recherche.lower() in v.lower()}
+        st.caption(f"{len(resultats)} mot(s) sur {len(GLOSSAIRE)}")
+        colonnes = st.columns(3)
+        for i, (terme, definition) in enumerate(resultats.items()):
+            with colonnes[i % 3]:
+                with st.expander(f"**{terme}**"):
+                    st.write(definition)
+
+
+def page_emotion():
+    st.markdown("# 💜 La météo de l'humeur (aperçu)")
+    st.caption(
+        "Aperçu d'une version future. L'enfant choisit lui-même son humeur : l'application n'analyse ni le visage, ni la voix, "
+        "et ne remonte rien à un adulte."
+    )
+    t1, t2 = st.tabs(["😊 Comment tu te sens ?", "✍️ Crée ton conte guidé"])
+
+    with t1:
+        noms = list(EMOTIONS.keys())
+        for debut_ligne in (0, 4):
+            colonnes = st.columns(4)
+            for col, nom in zip(colonnes, noms[debut_ligne:debut_ligne + 4]):
+                if col.button(nom, use_container_width=True, key=f"emo_{nom}"):
+                    st.session_state["emotion"] = nom
+        choisie = st.session_state.get("emotion")
+        if choisie:
+            adaptation, ico, message, histoire = EMOTIONS[choisie]
+            st.divider()
+            g1, g2 = st.columns(2)
+            g1.markdown("#### Ce que l'application proposerait")
+            g1.write(adaptation)
+            g2.markdown("#### ✨ Carte positive")
+            g2.markdown(
+                f"<div style='background:#FFF8E1;border:1.5px solid #FFE082;border-radius:16px;padding:18px;text-align:center'>"
+                f"<div style='font-size:42px'>{ico}</div><div style='font-size:16px;font-weight:700;color:#B7791F'>{message}</div></div>",
+                unsafe_allow_html=True,
+            )
+            st.markdown("#### 📖 Mini-histoire du jour")
+            st.markdown(f"*{histoire}*")
+
+    with t2:
+        st.write("L'enfant choisit les ingrédients, l'application assemble un conte à partir de modèles de phrases. Il n'y a pas d'IA générative en accès libre.")
+        heros = st.text_input("Ton personnage principal", "Tibo le robot", key="conte_heros")
+        lieu = st.selectbox("Le décor", ["une forêt de données", "une ville du futur", "un laboratoire secret", "l'espace numérique", "l'école de l'IA"], key="conte_lieu")
+        defi = st.text_input("Le défi à relever", "apprendre à reconnaître les nuages", key="conte_defi")
+        fin = st.radio("La fin de l'histoire", ["heureuse", "mystérieuse", "courageuse", "drôle"], horizontal=True, key="conte_fin")
+        if st.button("✨ Créer mon conte", type="primary", use_container_width=True, key="conte_creer"):
+            conte = conte_guide(heros, lieu, defi, fin)
+            st.markdown(conte)
+            st.download_button("💾 Télécharger mon conte", data=conte, file_name="mon_conte.txt", mime="text/plain", key="conte_dl")
 
 
 def minuteur(secondes):
@@ -751,15 +1067,54 @@ def minuteur(secondes):
 
 
 def page_mouvement():
-    st.markdown("# 🕺 Défis de mouvement (sans caméra)")
-    st.caption("Version 1 : aucune caméra, aucune vidéo. Les enfants bougent, l'animateur guide.")
-    duree = st.selectbox("Durée du minuteur", [10, 20, 30], index=0, format_func=lambda s: f"{s} secondes")
-    for i, (nom, consigne, lien) in enumerate(DEFIS_MOUVEMENT):
-        with st.expander(f"{nom}"):
-            st.write(consigne)
-            st.caption(f"Lien avec l'IA : {lien}")
-            if st.button(f"Lancer le minuteur ({duree} s)", key=f"minuteur_{i}"):
-                minuteur(duree)
+    st.markdown("# 🕺 Mouvement et santé")
+    t1, t2, t3 = st.tabs(["🎯 Défis du jour (sans caméra)", "⚡ Capsules sportives", "🧪 Aperçu Skeleton (simulation)"])
+
+    with t1:
+        st.caption("Version 1 : aucune caméra, aucune vidéo. Les enfants bougent, l'animateur guide.")
+        duree = st.selectbox("Durée du minuteur", [10, 20, 30], index=0, format_func=lambda sec: f"{sec} secondes", key="mouv_duree")
+        for i, (nom, consigne, lien) in enumerate(DEFIS_MOUVEMENT):
+            with st.expander(nom):
+                st.write(consigne)
+                st.caption(f"Lien avec l'IA : {lien}")
+                if st.button(f"Lancer le minuteur ({duree} s)", key=f"minuteur_{i}"):
+                    minuteur(duree)
+
+    with t2:
+        st.markdown("### Capsules sportives de 2 minutes")
+        for titre, etapes in CAPSULES.items():
+            with st.expander(f"**{titre}**"):
+                for i, etape in enumerate(etapes, 1):
+                    st.markdown(f"**{i}.** {etape}")
+                if st.button(f"✅ J'ai fait « {titre} »", key=f"capsule_{titre}"):
+                    ajouter_xp(30)
+                    st.success("Capsule terminée ! +30 XP")
+        st.divider()
+        st.info("⚡ Pause active : après 25 minutes assis·e, deux minutes de mouvement aident à se concentrer.")
+        if st.button("🕺 Lancer la pause active", type="primary", use_container_width=True, key="pause_active"):
+            with st.spinner("Pause active en cours : lève-toi et suis Tibo !"):
+                time.sleep(2)
+            st.success("🎉 Pause terminée !")
+            if not st.session_state["pause_done"]:
+                st.session_state["pause_done"] = True
+                ajouter_xp(50, "🕺 Pause active")
+            st.balloons()
+
+    with t3:
+        st.warning(
+            "Simulation. Aucune caméra n'est utilisée et rien n'est enregistré. La reconnaissance de pose fait partie de la version 2."
+        )
+        if st.button("▶️ Lancer la simulation", type="primary", use_container_width=True, key="sk_sim"):
+            with st.spinner("Initialisation de la pose (simulation)..."):
+                time.sleep(1.2)
+            st.success("Simulation : 33 points du corps repérés.")
+            st.progress(0.87, text="Score de posture simulé : 87 %")
+        st.markdown("### Défis de pose (exemple)")
+        for ico, nom, desc, statut in DEFIS_SKELETON:
+            c1, c2, c3 = st.columns([1, 4, 2])
+            c1.markdown(f"**{ico}**")
+            c2.markdown(f"**{nom}** : *{desc}*")
+            c3.markdown(statut)
 
 
 def page_dashboard():
@@ -813,15 +1168,17 @@ def page_feuille():
     st.markdown("### Ce qui est démontré, ce qui ne l'est pas encore")
     tableau = pd.DataFrame(
         [
-            ("Démo animée « Entraîne ta première IA » (k plus proches voisins, dans le navigateur)", "Version 1", "Démontré"),
-            ("Jeux et puzzles IA", "Version 1", "Démontré"),
-            ("Défis de mouvement sans caméra", "Version 1", "Démontré"),
+            ("Démo animée « Entraîne ta première IA » (k plus proches voisins)", "Version 1", "Démontré"),
+            ("Jeux sur l'IA : voisins, surapprentissage, erreurs, groupes", "Version 1", "Démontré"),
+            ("Quiz IA, points d'expérience et badges", "Version 1", "Aperçu (le moteur adaptatif complet est en version 2)"),
             ("Fiches animateur (6 séances)", "Version 1", "Démontré (contenu à tester avec des animateurs)"),
+            ("Défis de mouvement et capsules sportives sans caméra", "Version 1", "Démontré"),
             ("Tableau de bord et bilan", "Version 1", "Démonstration avec données fictives"),
-            ("Moteur de niveaux simple (règles)", "Version 1", "Non implémenté"),
+            ("Initiation au code et glossaire IA", "Version 2", "Aperçu"),
+            ("Humeur déclarée par l'enfant et contes guidés", "Version 2", "Aperçu (aucune analyse automatique des émotions)"),
             ("Suivi des connaissances (régression logistique, DKT)", "Version 2", "Étude en cours, nécessite des données de pilotes"),
-            ("Reconnaissance de pose par caméra", "Version 2", "Non implémenté (données sensibles)"),
-            ("Contes générés par IA", "Plus tard", "Non implémenté (cadre d'usage de l'IA en éducation)"),
+            ("Reconnaissance de pose par caméra (Skeleton)", "Version 2", "Simulation seulement : aucune caméra dans cette démonstration"),
+            ("Contes générés par une IA générative", "Plus tard", "Non implémenté (cadre d'usage de l'IA en éducation)"),
             ("Offres familles et écoles", "Phase 2", "Non implémenté"),
         ],
         columns=["Fonction", "Version", "Statut dans cette démonstration"],
@@ -860,7 +1217,9 @@ def page_diplome():
 P_ACCUEIL = "🏠 Accueil"
 P_PARCOURS = "📘 Parcours « Découverte IA »"
 P_JEUX = "🎮 Jeux pour les enfants"
-P_MOUVEMENT = "🕺 Défis de mouvement"
+P_CODING = "💻 Code et glossaire (aperçu)"
+P_EMOTION = "💜 Humeur et contes (aperçu)"
+P_MOUVEMENT = "🕺 Mouvement et santé"
 P_DIPLOME = "🎓 Mon diplôme"
 P_DASHBOARD = "📊 Tableau de bord animateur"
 P_OFFRE = "💶 Offre et pilote"
@@ -870,6 +1229,8 @@ PAGES = {
     P_ACCUEIL: page_accueil,
     P_PARCOURS: page_parcours,
     P_JEUX: page_jeux,
+    P_CODING: page_coding,
+    P_EMOTION: page_emotion,
     P_MOUVEMENT: page_mouvement,
     P_DIPLOME: page_diplome,
     P_DASHBOARD: page_dashboard,
@@ -877,11 +1238,28 @@ PAGES = {
     P_FEUILLE: page_feuille,
 }
 
+ETAT_INITIAL = {
+    "xp": 0, "niveau": 1, "badges": [], "quiz_idx": 0, "quiz_score": 0, "quiz_answered": False,
+    "quiz_correct": None, "code_ran": False, "pause_done": False, "emotion": None,
+}
+for cle, valeur in ETAT_INITIAL.items():
+    if cle not in st.session_state:
+        st.session_state[cle] = list(valeur) if isinstance(valeur, list) else valeur
+
 with st.sidebar:
     st.markdown("## 🧠 AI Sabi Academy")
     st.caption("Prototype de démonstration · données fictives")
+    zone_xp = st.empty()
     choix = st.radio("Navigation", list(PAGES.keys()), key="nav")
     st.divider()
     st.markdown("**Contact**  \nzineb@yakdata.fr  \n[Site](https://yakdata-engineering.netlify.app/) · [Nous contacter](https://yakdata-engineering.netlify.app/#contact)")
 
 PAGES[choix]()
+
+# Points d'expérience : affichés après la page pour être à jour
+_plein = (st.session_state["xp"] % 200) // 20
+_badges = "  ".join(f"`{b}`" for b in st.session_state["badges"]) or "aucun badge pour l'instant"
+zone_xp.markdown(
+    f"**Niveau {st.session_state['niveau']}** · {st.session_state['xp']} XP  \n"
+    f"{'🟩' * _plein}{'⬜' * (10 - _plein)}  \n{_badges}"
+)
